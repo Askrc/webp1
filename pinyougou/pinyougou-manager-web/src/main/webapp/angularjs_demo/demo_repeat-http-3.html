@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通过http内置方法访问远程数据</title>
+
+    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css"/>
+</head>
+<body ng-app = "myapp" ng-controller="myctrl">
+
+    <table class="table table-bordered">
+        <tr>
+            <th>下标</th>
+            <th>姓名</th>
+            <th>学号</th>
+            <th>语文成绩</th>
+        </tr>
+        <tr ng-repeat="stu in list">
+            <td>{{$index + 1}}</td>
+            <td>{{stu.name}}</td>
+            <td>{{stu.shuxue}}</td>
+            <td>{{stu.yuwen}}</td>
+        </tr>
+    </table>
+</body>
+
+<!-- 导入js -->
+<script src="../plugins/angularjs/angular.min.js"></script>
+<script type="text/javascript">
+    var myapp = angular.module("myapp", []);
+    myapp.controller("myctrl", function ($scope,$http) {
+       $http.get("data.json").success(function (data) {
+           $scope.list = data;
+       });
+    });
+
+</script>
+</html>

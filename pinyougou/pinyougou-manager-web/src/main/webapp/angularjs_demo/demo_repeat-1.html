@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环的使用</title>
+</head>
+<body ng-app = "myapp" ng-controller="myctrl">
+
+    <table>
+        <tr>
+            <th>元素下标</th>
+            <th>元素的值</th>
+        </tr>
+        <tr ng-repeat="x in list">
+            <td>{{$index + 1}}</td>
+            <td>{{x}}</td>
+        </tr>
+    </table>
+</body>
+
+<!-- 导入js -->
+<script src="../plugins/angularjs/angular.min.js"></script>
+<script type="text/javascript">
+    var myapp = angular.module("myapp", []);
+    myapp.controller("myctrl", function ($scope) {
+        $scope.list = [111,222,333,444,555,666];
+    });
+
+</script>
+</html>
